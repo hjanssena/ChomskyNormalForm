@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
+from FormaNormal.views import mainView
 
 urlpatterns = [
-    path('', admin.site.urls)
+    path('', mainView, name="main"),
 ]

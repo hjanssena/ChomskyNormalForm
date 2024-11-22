@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/fnc/" method="post" class="mb-3">
+    {% csrf_token %}
+    <textarea name="lenguaje" id="lenguaje" required placeholder="Introduce tu lenguaje." spellcheck="false"
+        class="form-control"></textarea>
+    <input type="submit" value="Enviar" class="btn">
+</form>
+{% endblock %}
