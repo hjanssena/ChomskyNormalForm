@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <h3>Gramatica inicial</h3>
+        </div>
+        <div class="col-3">
+            {% for i in inicio %}
+            <span>{{i.0}} -> {{i.1}}</span><br>
+            {% endfor %}
+        </div>
+        <div class="col-3">
+            <h3>Paso 1:</h3>
+            <h5>Eliminamos epsilon</h5>
+        </div>
+        <div class="col-3">
+            {% for p in primero %}
+            <span>{{p.0}} -> {{p.1}}</span><br>
+            {% endfor %}
+        </div>
+        <div class="col-3">
+            <h3>Paso 2:</h3>
+            <h5>Eliminamos variables unitarias</h5>
+        </div>
+        <div class="col-3">
+            {% for s in segundo %}
+            <span>{{s.0}} -> {{s.1}}</span><br>
+            {% endfor %}
+        </div>
+        <div class="col-3">
+            <h3>Paso 3:</h3>
+            <h5>Restringimos terminales</h5>
+        </div>
+        <div class="col-3">
+            {% for t in tercero %}
+            <span>{{t.0}} -> {{t.1}}</span><br>
+            {% endfor %}
+        </div>
+        <div class="col-3">
+            <h3>Paso 4:</h3>
+            <h5>Reducimos a producciones de dos variables</h5>
+        </div>
+        <div class="col-3">
+            {% for c in cuarto %}
+            <span>{{c.0}} -> {{c.1}}</span><br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
