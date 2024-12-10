@@ -1,0 +1,37 @@
+body{
+    background-color: black;
+    color: white;
+}
+
+h1{
+    align-self: center;
+    text-align: center;
+    margin: 1em;
+}
+
+.boton{
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.texto{
+    height: 25em;
+}
+
+.boton>input{
+    display: flex;
+    align-self: center;
+}
+
+.step-title{
+    margin: 1em;
+    align-content: center;
+}
+
+.step-procedure{
+    margin: 1em;
+    align-content: center;
+    background-color: rgb(20, 20, 20);
+}

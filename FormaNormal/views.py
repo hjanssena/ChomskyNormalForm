@@ -1,10 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .chomskyLib import *
 
 def mainView(request):
     if request.method == "POST":
         lenguaje = request.POST['lenguaje']
-        lenguaje = lenguaje.replace('"""', "").replace("\r", "").replace("...", "")
+        lenguaje = lenguaje.replace('"""', "").replace("\r", "").replace("...", "").replace("'''", "")
         producciones = parseLang(lenguaje)
         inicio = copiarProd(producciones)
         terminales = parseTerminales(producciones)
@@ -23,3 +23,5 @@ def mainView(request):
         context = {}
         return render(request, "new.html", context)
 
+def red(request):
+    return redirect("fnc/")

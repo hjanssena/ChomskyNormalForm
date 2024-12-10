@@ -1,48 +1,109 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>Resultado</h1>
 <div class="container">
     <div class="row">
-        <div class="col-3">
+        <div class="col-3 step-title">
             <h3>Gramatica inicial</h3>
+            <h5>Leer entrada</h5>
+            <p>Se parsea la entrada del usuario en el formato que acepta la libreria NLTK y se almacena 
+                en una lista de tuplas de variables y producciones.</p>
         </div>
-        <div class="col-3">
+        <div class="col-2 step-procedure">
             {% for i in inicio %}
             <span>{{i.0}} -> {{i.1}}</span><br>
             {% endfor %}
         </div>
-        <div class="col-3">
+        <div class="col-3 step-title">
             <h3>Paso 1:</h3>
             <h5>Eliminamos epsilon</h5>
+            <p>Se quitan todas las producciones epsilon. Posteriormente se agregan producciones en los casos que se produzca la variable que generaba epsilon
+                tal que ya no se produzca esta variable.<br><br>
+
+                Ejemplo:<br><br>
+                A -> B C<br>
+                B -> 'b' | 'epsilon'<br>
+                C -> 'c'<br><br>
+
+                Se convierte en:<br><br>
+                A -> B C | C<br>
+                B -> 'b'<br>
+                C -> 'c'
+            </p>
         </div>
-        <div class="col-3">
+        <div class="col-2 step-procedure">
             {% for p in primero %}
             <span>{{p.0}} -> {{p.1}}</span><br>
             {% endfor %}
         </div>
-        <div class="col-3">
+        <div class="col-3 step-title">
             <h3>Paso 2:</h3>
             <h5>Eliminamos variables unitarias</h5>
+            <p>Eliminamos todas las producciones que solo produzcan una variable y sustituimos 
+                cada una por todo lo que produzca esa variable. <br><br>
+            
+                Ejemplo:<br><br>
+
+                A -> 'a' | B<br>
+                B -> 'b' <br>
+                C -> 'c'
+                <br><br>
+                Se convierte en:
+                <br><br>
+                A -> 'a' | 'b' | C 'b'<br>
+                B -> 'b' | C 'b'<br>
+                C -> 'c'
+            </p>
         </div>
-        <div class="col-3">
+        <div class="col-2 step-procedure">
             {% for s in segundo %}
             <span>{{s.0}} -> {{s.1}}</span><br>
             {% endfor %}
         </div>
-        <div class="col-3">
+        <div class="col-3 step-title">
             <h3>Paso 3:</h3>
             <h5>Restringimos terminales</h5>
+            <p>
+                Todas las producciones de terminales que esten acompañadas de otra terminal o variable 
+                se reemplazan por una variable nueva.
+                La variable nueva producirá la terminal que se reemplazó.<br><br>
+                
+                Ejemplo:
+                <br><br>
+                A -> B 'a' | B <br>
+                B -> 'b'<br><br>
+
+                Se convierte en:<br><br>
+
+                A -> B Xa | B <br>
+                B -> 'b'<br>
+                Xa -> 'a'
+            </p>
         </div>
-        <div class="col-3">
+        <div class="col-2 step-procedure">
             {% for t in tercero %}
             <span>{{t.0}} -> {{t.1}}</span><br>
             {% endfor %}
         </div>
-        <div class="col-3">
+        <div class="col-3 step-title">
             <h3>Paso 4:</h3>
             <h5>Reducimos a producciones de dos variables</h5>
+            <p>
+                Para cada produccion que produzca mas de dos variables, se sustituye toda la produccion menos la primera variable
+                por una variable nueva que produzca los valores sustituidos.<br><br>
+
+                Ejemplo:<br><br>
+
+                A -> B C D <br><br>
+                
+                Se convierte en:<br><br>
+
+                A -> B AA <br>
+                AA -> C D
+            </p>
         </div>
-        <div class="col-3">
+        <div class="col-2 step-procedure">
             {% for c in cuarto %}
             <span>{{c.0}} -> {{c.1}}</span><br>
             {% endfor %}

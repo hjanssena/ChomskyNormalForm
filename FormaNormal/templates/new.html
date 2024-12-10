@@ -3,8 +3,15 @@
 {% block content %}
 <form action="/fnc/" method="post" class="mb-3">
     {% csrf_token %}
-    <textarea name="lenguaje" id="lenguaje" required placeholder="Introduce tu lenguaje." spellcheck="false"
-        class="form-control"></textarea>
-    <input type="submit" value="Enviar" class="btn">
+    <h1>Nuevo lenguaje:</h1>
+    <div class="container">
+        <div class="row">
+            <textarea name="lenguaje" id="lenguaje" required placeholder="Introduce tu lenguaje." spellcheck="false"
+            class="form-control col-12 texto"></textarea>
+            <div class="col-12 boton">
+                <input type="submit" value="Enviar" class="btn btn-info">
+            </div>
+        </div>
+    </div>
 </form>
 {% endblock %}
